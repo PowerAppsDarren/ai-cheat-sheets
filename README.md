@@ -7,6 +7,29 @@ A comprehensive collection of AI prompting guides and cheat sheets for various A
 - **Video Generation**: Complete guide for AI video prompting and storyboard creation
 - *More cheat sheets coming soon...*
 
+## 📁 Repository Structure
+
+```
+ai-cheat-sheets/
+├── .git/                           # Git repository data
+├── .github/                        # GitHub-specific files
+│   ├── ISSUE_TEMPLATE/             # Issue templates
+│   │   ├── bug_report.yml          # Bug report form
+│   │   ├── feature_request.yml     # Feature request form
+│   │   └── question.yml            # Question form
+│   ├── PULL_REQUEST_TEMPLATE.md    # PR template
+│   └── workflows/                  # GitHub Actions
+│       └── validation.yml          # HTML validation workflow
+├── .gitignore                      # Files to ignore in Git
+├── CHANGELOG.md                    # Version history
+├── CONTRIBUTING.md                 # Contribution guidelines
+├── LICENSE                         # MIT license
+├── README.md                       # This file
+├── SECURITY.md                     # Security policy
+├── roadmap.md                      # Project roadmap
+└── video-gen.html                  # Video generation cheat sheet
+```
+
 ## 🚀 Quick Start
 
 1. Browse the cheat sheets in your web browser
