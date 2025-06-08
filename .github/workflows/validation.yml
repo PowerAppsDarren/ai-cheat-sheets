@@ -1,0 +1,76 @@
+name: HTML Validation and Link Check
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    
+    - name: Install HTML5 Validator
+      run: |
+        npm install -g html5-validator-cli
+    
+    - name: Validate HTML files
+      run: |
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            echo "Validating $file..."
+            html5-validator --file="$file" --format=text
+          fi
+        done
+    
+    - name: Check for broken links
+      run: |
+        # Install link checker
+        npm install -g broken-link-checker
+        
+        # Start a simple HTTP server
+        python3 -m http.server 8080 &
+        SERVER_PID=$!
+        sleep 2
+        
+        # Check links in HTML files
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            echo "Checking links in $file..."
+            blc http://localhost:8080/$file --recursive --ordered
+          fi
+        done
+        
+        # Clean up
+        kill $SERVER_PID
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security scan
+      run: |
+        # Check for common security issues in HTML
+        echo "Scanning for potential security issues..."
+        
+        # Check for inline event handlers (potential XSS)
+        if grep -r "on[a-zA-Z]*=" *.html 2>/dev/null; then
+          echo "⚠️  Warning: Found inline event handlers - consider using external JavaScript"
+        fi
+        
+        # Check for external script sources
+        if grep -r "<script.*src=" *.html 2>/dev/null; then
+          echo "ℹ️  Info: External scripts found - ensure they are from trusted sources"
+        fi
+        
+        echo "✅ Security scan completed"
