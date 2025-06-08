@@ -1,0 +1,95 @@
+name: Feature Request
+description: Suggest a new cheat sheet or feature
+title: "[Feature]: "
+labels: ["enhancement", "feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! We appreciate your ideas for improving AI Cheat Sheets.
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: What type of feature are you requesting?
+      options:
+        - New AI tool cheat sheet
+        - Improvement to existing cheat sheet
+        - Website/repository enhancement
+        - Documentation improvement
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: ai-tool
+    attributes:
+      label: AI Tool/Platform
+      description: If this is for a new cheat sheet, which AI tool should it cover?
+      placeholder: e.g., ChatGPT, DALL-E, Midjourney, Claude, etc.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: A clear and detailed description of what you want to see added.
+      placeholder: Describe the feature or cheat sheet you'd like to see...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: How would this feature be used? What problem does it solve?
+      placeholder: Explain why this would be useful...
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Provide examples of what this feature should include.
+      placeholder: |
+        What specific prompts, techniques, or information should be covered?
+        Any example prompts or workflows?
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Low - Nice to have
+        - Medium - Would be helpful
+        - High - Really needed
+        - Critical - Essential for my workflow
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, links, or screenshots about the feature request.
+      placeholder: Links to tools, documentation, examples, etc.
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you be interested in helping create this feature?
+      options:
+        - label: I'd be willing to help create this cheat sheet
+        - label: I can provide examples and test content
+        - label: I can help with documentation
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this request, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

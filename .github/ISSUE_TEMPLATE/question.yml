@@ -1,0 +1,75 @@
+name: Question
+description: Ask a question about the cheat sheets or AI prompting
+title: "[Question]: "
+labels: ["question", "help-wanted"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Have a question about AI prompting or the cheat sheets? We're here to help!
+
+  - type: dropdown
+    id: question-type
+    attributes:
+      label: What type of question is this?
+      options:
+        - How to use a specific AI tool
+        - Understanding a prompting technique
+        - Cheat sheet clarification
+        - Best practices advice
+        - Technical implementation
+        - General AI prompting help
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: related-tool
+    attributes:
+      label: Related AI Tool
+      description: Which AI tool is your question about?
+      placeholder: e.g., ChatGPT, DALL-E, Midjourney, Suno, etc.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know?
+      placeholder: Ask your question in detail...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What are you trying to accomplish? What have you tried already?
+      placeholder: |
+        What's your goal?
+        What have you tried so far?
+        Any specific challenges you're facing?
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Share any specific prompts or examples you're working with.
+      placeholder: |
+        Example prompts you've tried:
+        Expected vs actual results:
+
+  - type: input
+    id: experience-level
+    attributes:
+      label: Experience Level
+      description: How familiar are you with AI prompting?
+      placeholder: e.g., Beginner, Intermediate, Advanced
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this question, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
